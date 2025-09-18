@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Music Instrument System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* --- Collage Section Styles --- */
+    .collage {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: -60px; /* overlap like Wix */
+      perspective: 1200px;
+      margin: 80px 0; /* space before footer */
+    }
+
+    .collage img {
+      width: 220px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      transform: rotateY(-15deg) rotateX(5deg);
+      transition: transform 0.2s ease, z-index 0.2s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .collage img:nth-child(even) {
+      transform: rotateY(15deg) rotateX(-5deg);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <!-- Header / Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">MusicHub</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item" active><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="instrument.html">Instruments</a></li>
+            <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+            <li class="nav-item"><a class="nav-link" href="galley.html">Galley</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="main container mt-5">
+      <h1 class="text-center">Welcome to MusicHub</h1>
+      <p class="text-center">Explore various musical instruments, events, and reviews.</p><br>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+
+    <!-- Collage Section -->
+    <div class="collage container-center">
+      <img src="images\g6.jpeg" alt="Instrument 1">
+      <img src="images\g15.jpg" alt="Instrument 2">
+      <img src="images\g12.jpg" alt="Instrument 3">
+      <img src="images\g11.jpg" alt="Instrument 4">
+      <img src="images\g13.jpg" alt="Instrument 5">
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white text-center py-3">
+      &copy; 2025 MusicHub. All Rights Reserved.
+    </footer>
+  </div>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Collage Hover Script -->
+  <script>
+    const images = document.querySelectorAll('.collage img');
+
+    images.forEach(img => {
+      img.addEventListener('mousemove', (e) => {
+        const rect = img.getBoundingClientRect();
+        const x = e.clientX - rect.left; 
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * 10; // tilt up/down
+        const rotateY = ((x - centerX) / centerX) * 10; // tilt left/right
+
+        img.style.transform = `rotateY(${rotateY}deg) rotateX(${-rotateX}deg) scale(1.1)`;
+        img.style.zIndex = 10;
+      });
+
+      img.addEventListener('mouseleave', () => {
+        img.style.transform = ''; // reset to default CSS
+        img.style.zIndex = 1;
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instrument Categories - MusicHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">MusicHub</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="instrument.html">Instruments</a></li>
+          <li class="nav-item active"><a class="nav-link" href="categories.html">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="galley.html">Galley</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+ 
+
+  <!-- Instrument Categories -->
+  <section class="py-5 text-center bg-light">
+    <div class="container">
+      <h2 class="fw-bold">Instrument Categories</h2>
+      <p class="text-muted">Explore instruments by type</p>
+    </div>
+  </section>
+
+  <!-- Custom 3-Card Carousel -->
+  <section class="py-5 position-relative">
+    <div class="container">
+      <div class="row justify-content-center" id="cardRow">
+        <!-- Cards injected by JS -->
+      </div>
+      <!-- Arrows -->
+      <div class="carousel-arrow left" onclick="prevSlide()">&#10094;</div>
+      <div class="carousel-arrow right" onclick="nextSlide()">&#10095;</div>
+    </div>
+  </section>
+
+ <!-- Video Hero Section -->
+  <section class="video-section">
+    <video autoplay muted loop>
+      <source src="video/index.mp4" type="video/mp4" />
+      Your browser does not support video.
+    </video>
+    <div class="video-overlay">
+      <h1>Welcome to MusicHub</h1>
+      <p>Discover Instruments & Sounds Around the World</p>
+    </div>
+  </section>
+
+  <section class="py-5 text-center bg-light">
+    <div class="container">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 MusicHub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const cardsData = [
+      { img: "images/string1.jpg", title: "String Instruments", text: "Guitars, violins, sitars and more." },
+      { img: "images/wind1.jpg", title: "Wind Instruments", text: "Flutes, saxophones, trumpets, etc." },
+      { img: "images/percussion1.jpg", title: "Percussion", text: "Drums, tablas, and other rhythm makers." },
+      { img: "images/keyboard1.jpg", title: "Keyboard", text: "Pianos, harmoniums, and synthesizers." },
+      { img: "images/electronic1.jpg", title: "Electronic", text: "Modern digital sound machines." }
+    ];
+
+    let index = 0;
+    const cardRow = document.getElementById("cardRow");
+
+    function showSlides() {
+      cardRow.innerHTML = "";
+      for (let i = 0; i < 3; i++) {
+        let cardIndex = (index + i) % cardsData.length;
+        let card = cardsData[cardIndex];
+        cardRow.innerHTML += `
+          <div class="col-md-4">
+            <div class="card shadow">
+              <img src="${card.img}" class="card-img-top" style="height:200px; object-fit:cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title">${card.title}</h5>
+                <p class="card-text">${card.text}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function nextSlide() {
+      index = (index + 1) % cardsData.length;
+      showSlides();
+    }
+
+    function prevSlide() {
+      index = (index - 1 + cardsData.length) % cardsData.length;
+      showSlides();
+    }
+
+    // Auto-slide every 3 seconds
+    setInterval(nextSlide, 3000);
+
+    // Initial render
+    showSlides();
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

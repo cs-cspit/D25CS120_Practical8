@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us - MusicHub</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Header/Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">MusicHub</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="instrument.html">Instruments</a></li>
+            <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+            <li class="nav-item"><a class="nav-link" href="galley.html">Galley</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item" active><a class="nav-link" href="login.html">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="py-5 text-center bg-light">
+      <div class="container">
+        <h1 class="fw-bold">User Login</h1>
+        <p class="text-muted">Access your MusicHub account to explore playlists, manage your instruments, and connect with fellow music lovers. <br>Enter your credentials below to get started!</p>
+      </div>
+    </section>
+
+  <!-- Contact Content -->
+  <section class="container my-5">
+    <div class="row g-4">
+
+      <!-- Left Side: Contact Form -->
+      <div class="col-md-6">
+        <form action="backend/login.php" method="POST" >
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+      
+
+      <!-- Right Side: Image + FAQ -->
+      <div class="col-md-6">
+        <!-- Image -->
+        <img src="images\g7.jpeg" alt="Contact Support" class="img-fluid rounded mb-4 shadow">
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Popup Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title" id="successModalLabel">Message Sent</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          ✅ You have logged in successfully.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    function showPopup(event) {
+      event.preventDefault(); // Prevent page reload
+      var myModal = new bootstrap.Modal(document.getElementById('successModal'));
+      myModal.show();
+    }
+  </script>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        &copy; 2025 MusicHub. All rights reserved.
+      </div>
+    </footer>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
